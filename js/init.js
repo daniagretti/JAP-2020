@@ -44,4 +44,7 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  //para que traiga y muestre al usuario en la barra de navegación 
+  var user = JSON.parse(localStorage.getItem("usuarioActual")); //parseo el JSON para usarlo como objeto
+  document.getElementById("navBar").innerHTML += `<a class="py-2 d-none d-md-inline-block" href="my-profile.html">` + user.userName + ` </a>`;
 });

@@ -35,6 +35,44 @@
         <hr>
         <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
       </div>-->
+      <div class="container">
+        <div class="row">
+          <div class="col text-right">
+            <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+              <label class="btn btn-light active" id="sortPreciosAsc">
+                <input type="radio" name="options" autocomplete="off" checked>A-Z Precio
+              </label>
+              <label class="btn btn-light active" id="sortPreciosDesc">
+                <input type="radio" name="options" autocomplete="off" checked>Z-A Precio
+              </label>
+              <label class="btn btn-light" id="sortRelevancia">
+                <input type="radio" name="options" autocomplete="off">Z-A Relevancia
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-end">
+          <div class="col-md-6"></div>
+          <div class="col-md-6 col-sm-12 mb-1 container">
+            <div class="row container p-0 m-0">
+              <div class="col">
+                <p class="font-weight-normal text-right my-2">Precio</p>
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
+              </div>
+              <div class="col-3 p-0">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
+                  <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       <div id="lista_productos">
       </div>
     </div>

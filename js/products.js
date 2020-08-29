@@ -5,6 +5,21 @@ const relevancia_desc = "Relevancia";
 var minPrecio;
 var maxPrecio;
 var currentSortCriteria;
+var prods = [];
+
+//filtrado de busqueda
+function busqueda(prods) {
+    var input = document.getElementById("buscador");
+    var filtro = input.value.toUpperCase();
+
+    for (let i = 0; i < prods.length; i++) {
+        if (prods[i].dataset.filterName.toUpperCase().includes(filtro) || prods[i].dataset.filterDesc.toUpperCase().includes(filtro)) {
+            prods[i].parentNode.style.display = "";
+        } else {
+            prods[i].parentNode.style.display = "none";
+        }
+    }
+}
 
 function sortPrecios(criterio, array) {
     let result = [];
@@ -47,7 +62,7 @@ function showProductsList() {
             //html a insertar:
             htmlContentToAppend += `
             <div class="list-group-item list-group-item-action">
-                <div class="row">
+                <div class="row" data-filter-name="`+ products.name + `"data-filter-desc="` + products.description + `">
                     <div class="col-3">
                         <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail">
                     </div>
@@ -88,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             arrayProducts = resultObj.data;
             showProductsList(arrayProducts);
         }
+        prods = document.getElementById("lista_productos").getElementsByClassName("row");
     });
     //cuando haga click en el correspondiente, que muestre la lista de productos ordenada en funcion a ese criterio
     document.getElementById("sortPreciosAsc").addEventListener("click", function(){
@@ -128,6 +144,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
 
         showProductsList();
+    });
+       //buscador
+    document.getElementById("buscador").addEventListener("keyup", function () {
+        busqueda(prods);
+
     });
 
 });

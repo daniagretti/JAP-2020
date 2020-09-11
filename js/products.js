@@ -61,6 +61,7 @@ function showProductsList() {
             ((maxPrecio == undefined) || (maxPrecio != undefined && parseInt(products.cost) <= maxPrecio))) {
             //html a insertar:
             htmlContentToAppend += `
+            <a href="product-info.html" class="list-group-item list-group-item-action">
             <div class="list-group-item list-group-item-action">
                 <div class="row" data-filter-name="`+ products.name + `"data-filter-desc="` + products.description + `">
                     <div class="col-3">

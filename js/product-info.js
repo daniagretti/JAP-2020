@@ -115,7 +115,6 @@ getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
             let prodCat = document.getElementById("productCategory");
             let prodSold = document.getElementById("productSoldCount");
 
-            // completar la funcion mostrando la informacion en el html de videogames-info
             prodName.innerHTML += prodInfo.name;
             prodCost.innerHTML += prodInfo.currency + " " + prodInfo.cost;
             prodDesc.innerHTML += prodInfo.description;

@@ -73,6 +73,7 @@ function showProductsList() {
                         </div>
                         <div> 
                             <p>`+ products.description + ` </p>
+                            <small class="text-muted"> Vendidos ` + products.soldCount + `</small>
                         </div>
                     </div>
                 </div>

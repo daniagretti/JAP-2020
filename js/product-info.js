@@ -1,6 +1,7 @@
 var prodInfo = {};
 var prodComments = {};
 var prodAll = {};
+var rating = 0;
 
 function showImagesGallery(array) {
     let htmlImg = "";
@@ -102,7 +103,7 @@ function add(starNum) {
             current.className = "fa fa-star checked"
         }
     }
-    
+     rating = starNum;
 }
 document.addEventListener("DOMContentLoaded", function(e){
 getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
@@ -126,15 +127,13 @@ getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
             showImagesGallery(prodInfo.images);
             //Muestro los productos relacionados
             showRelatedProducts(prodInfo.relatedProducts);
-            //Caja para nuevo comentario
-           // showNewComment();
             //Muestro los comentarios con el rating
             showComments();
 
         }
     });
     document.getElementById("enviar").addEventListener("click", function(){
-     
+        
         let texto = document.getElementById("textArea").value;
         let user = JSON.parse(localStorage.getItem("usuarioActual")); //para obtener el nombre del usuario ingresado
    
@@ -149,11 +148,12 @@ getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
 
         today = today.getFullYear()+'-'+mes+'-'+today.getDate()+" "+today.getHours()+":"+today.getMinutes()+":"+today.getSeconds();
         
+        
         let htmlComentario = `  
         <div class="row">
         
         <div class="w-100 justify-content-between list-group-item list-group-item-action">
-                 <p class="text-muted"><img src="https://es.calcuworld.com/wp-content/uploads/sites/2/2019/09/generador-de-nombres-de-usuario.png" alt="Avatar" class="avatar"> <strong>`+ user.userName + `</strong>` + " " + "(" + today + ")" + `</p>
+                 <p class="text-muted"><img src="https://es.calcuworld.com/wp-content/uploads/sites/2/2019/09/generador-de-nombres-de-usuario.png" alt="Avatar" class="avatar"> <strong>`+ user.userName + `</strong>` + " " + "(" + today + ")" +showRating(rating)+`</p>
                  <p> ` + texto + `</p>
                  
             
@@ -162,8 +162,12 @@ getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
         </div>
          
         `
+        
+
         document.getElementById("comment").innerHTML += htmlComentario;
-        document.getElementById("textArea").innerHTML = " ";
+        
 
     });
+
+    
 });

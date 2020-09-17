@@ -145,7 +145,7 @@ getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
     });
     document.getElementById("enviar").addEventListener("click", function(){ //cuando se hace click en enviar en la seccion de comentar
         
-        let texto = document.getElementById("textArea").value; //tomar lo que esta comentado para luego mostrarlo
+        let texto = document.getElementById("textAreaComment").value; //tomar lo que esta comentado para luego mostrarlo
         document.getElementById("textAreaComment").value = ""; //para limpiar la caja de texto
         let user = JSON.parse(localStorage.getItem("usuarioActual")); //para obtener el nombre del usuario ingresado
    

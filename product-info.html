@@ -22,7 +22,7 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <!--<a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>-->
+      <!--<a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a> Lo comento porque ahora se visualiza en un drop list a la derecha en el nav cambiado en el init.js-->
     </div>
   </nav>
  <!-- <div class="container p-5">
@@ -71,8 +71,11 @@
         <dd>
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
             <div id="carouselExampleIndicators" style="width:35pc;"class="carousel slide carousel-fade" data-ride="carousel">
-              <ol class="carousel-indicators" id="carrusel"></ol>
+              <!--en esta lista es para visualizar la cantidad de imagenes que se muestran en el carrusel-->
+              <ol class="carousel-indicators" id="carouselHtml"></ol> 
+              <!-- en este div vamos a poner las imagenes-->
               <div class="carousel-inner" id="productImages"></div>
+              <!-- esto sirve apra las flechas y que corra el carrusel a la imagen anterior y a la siguiente-->
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
@@ -105,7 +108,7 @@
                   <textarea id="textArea" name="comment" class="form-control"
                     placeholder="Haz un comentario"></textarea>
                 </div>
-                
+                <!-- las estrellas que se muestran para puntuar en el comentario-->
                 <div class="text-right">
                   <span class="fa fa-star" id="star1" onclick="add(1)"></span>
                   <span class="fa fa-star" id="star2" onclick="add(2)"></span>

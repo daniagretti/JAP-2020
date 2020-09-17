@@ -135,17 +135,21 @@ a.custom-card:hover {
   color: inherit;
   text-decoration: inherit;
 }
-
+/*color de las estrellitas*/
 .checked {
   color: orange;
 }
-
+/* foto de los perfiles que comentan*/
 .avatar {
   vertical-align: middle;
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
-#dropDown{
-  color: white;
+/*glow de los productos relacionados y texto justificado*/
+#related{
+  /* https://codersblock.com/blog/creating-glow-effects-with-css/ */
+  box-shadow:  0 0 10px rgb(251, 185, 226);
+  text-align: justify;
 }
+

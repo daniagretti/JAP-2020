@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function(e){
   //para que traiga y muestre al usuario en la barra de navegación 
   var user = JSON.parse(localStorage.getItem("usuarioActual")); //parseo el JSON para usarlo como objeto
   document.getElementById("navBar").innerHTML += `
-      <a class="py-2 d-none d-md-inline-block nav-link dropdown-toggle" id="dropDown" role="button" data-toggle="dropdown" >` + user.userName + ` </a>
+      <a class="py-2 d-none d-md-inline-block nav-link dropdown-toggle" style="color:white;" role="button" data-toggle="dropdown" >` + user.userName + ` </a>
       <div class="dropdown-menu">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">

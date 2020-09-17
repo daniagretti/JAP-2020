@@ -24,18 +24,25 @@ function showImagesGallery(array) {
                 </div>`
         }
     }
-    document.getElementById("carouselHtml").innerHTML = htmlImg; //ponemos la cantidad de li dentro del ol en html para que muestre la cantidad de imagenes
+    document.getElementById("carouselHtml").innerHTML = htmlImg; //ponemos la cantidad de li dentro del ol en html para que muestre la cantidad de imagenes como rayitas en la imagen
     document.getElementById("productImages").innerHTML = htmlCarousel; //agregamos el carrusel propiamente dicho
 }
 
 
 function showRelatedProducts(array) {
+    /*abajo se llama al JSON de product info donde los productos relacionados se encuentran en un array y a su vez, 
+    ese array referencia las posiciones de los productos en el JSON con los productos general, por eso llamamos al getJSON con el general y 
+    es por eso mismo que tenemos que buscar al relacionado como la posicion en el array(que se ingresa cuando se llama a la funcion mas abajo con el product info)
+    prodAll[array[i]]*/
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            prodAll = resultObj.data;
+            prodAll = resultObj.data; //trae los datos de los productos generales
             let htmlRelatedProds = "";
             for (let i = 0; i < array.length; i++) {
-                let related = prodAll[array[i]];  
+                let related = prodAll[array[i]]; 
+                 /*los relacionados son aquellos que marcan en el json product info que lo traemos en array[i], pero queremos que nos devuelva la info de esos,
+                por lo que queremos en realidad a los productos (en json product general) de esas posiciones del array,
+                en este caso buscamos las posiciones del json product info que serian [1,3] pero los datos del general del producto*/
                 htmlRelatedProds += `
                 <div class= "col-lg-3 col-md-4 col-6 border" id="related">
                     <div id="relatedProdImg" class= "row">

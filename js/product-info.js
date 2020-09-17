@@ -24,7 +24,7 @@ function showImagesGallery(array) {
                 </div>`
         }
     }
-    document.getElementById("carrusel").innerHTML = htmlImg; //ponemos la cantidad de li dentro del ol en html para que muestre la cantidad de imagenes
+    document.getElementById("carouselHtml").innerHTML = htmlImg; //ponemos la cantidad de li dentro del ol en html para que muestre la cantidad de imagenes
     document.getElementById("productImages").innerHTML = htmlCarousel; //agregamos el carrusel propiamente dicho
 }
 

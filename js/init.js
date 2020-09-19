@@ -43,10 +43,16 @@ var getJSONData = function(url){
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function (e) {
   //para que traiga y muestre al usuario en la barra de navegación 
   var user = JSON.parse(localStorage.getItem("usuarioActual")); //parseo el JSON para usarlo como objeto
-  document.getElementById("navBar").innerHTML += `
+  //con este if vemos si se cumple que el usuario siga con la sesión activa o no, dado que si la cerró queda en null
+  if (user == null) {
+    //en caso de estar la sesión cerrada debe aparecer Iniciar sesión en la parte superior derecha de la barra de navegación
+    document.getElementById("navBar").innerHTML +=
+      `<a class="py-2 d-none d-md-inline-block nav-link " style="color:white;" role="button" href="index.html" >Iniciar sesión </a>`
+  } else {
+    document.getElementById("navBar").innerHTML += `
       <a class="py-2 d-none d-md-inline-block nav-link dropdown-toggle" style="color:white;" role="button" data-toggle="dropdown" >` + user.userName + ` </a>
       <div class="dropdown-menu">
         <ul class="navbar-nav mr-auto">
@@ -54,10 +60,20 @@ document.addEventListener("DOMContentLoaded", function(e){
              <a class="dropdown-item" href="cart.html">Mi Carrito</a>
              <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="index.html">Cerrar sesión</a>
+              <a id="logout"class="dropdown-item" href="index.html">Cerrar sesión</a>
           </li>
         </ul>
       </div>   
   
-     `;
+     `
+    //con lo siguiente nos aseguramos de borrar los datos del usuario que cierra la sesión
+    let cerrar = document.getElementById("logout");
+    cerrar.addEventListener("click", function (e) {
+      localStorage.removeItem("usuarioActual");
+
+    });
+  }
+
+
+
 });

@@ -3,6 +3,7 @@ var prodComments = {};
 var prodAll = {};
 var rating = 0;
 
+//MOSTRAR IMAGENES COMO CARRUSEL
 function showImagesGallery(array) {
     let htmlImg = "";
     let htmlCarousel = "";
@@ -28,7 +29,7 @@ function showImagesGallery(array) {
     document.getElementById("productImages").innerHTML = htmlCarousel; //agregamos el carrusel propiamente dicho
 }
 
-
+//MOSTRAR PRODUCTOS RELACIONADOS
 function showRelatedProducts(array) {
     /*abajo se llama al JSON de product info donde los productos relacionados se encuentran en un array y a su vez, 
     ese array referencia las posiciones de los productos en el JSON con los productos general, por eso llamamos al getJSON con el general y 
@@ -64,13 +65,15 @@ function showRelatedProducts(array) {
     });
 
 }
-
+//MOSTRAR PUNTAJE COMO ESTRELLAS
 function showRating(rating) {
     let htmlScore = "";
     let stars = "";
 
-    for (let i = 1; i <= 5; i++) {
-        if (i <= rating) {
+    for (let i = 1; i <= 5; i++) { //recorro todas las estrellas (son max 5)
+        /*si las estrellas son iguales o menores al rating que se le dio deben aparecer
+        en color naranja el resto (serian las no seleccionadas) van negras*/
+        if (i <= rating) { 
             stars += `<i class="fa fa-star checked"></i>`;
         } else {
             stars += `<i class="fa fa-star"></i>`;
@@ -79,8 +82,10 @@ function showRating(rating) {
     htmlScore = `<span> ${stars} </span>`
     return htmlScore;
 }
-
+//MOSTRAR COMENTARIOS DEL JSON
 function showComments() {
+    /*primero traigo el json con los comentarios y los recorro para poder obtener la info de cada uno 
+    como la fecha, el usuario y el comentario en si mismo. Ademas, se le agrega un avatar al perfil del usuario del comentario*/
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             prodComments = resultObj.data;
@@ -106,21 +111,25 @@ function showComments() {
     });
 }
 
-
+//FUNCION PARA HACER RATING EN NUEVO COMENTARIO
 function add(starNum) {
     //la llamamos en showNewComment() onclick
-
+//debe mostrar las 5 estrellas
     for (var i = 1; i <= 5; i++) {
         var current = document.getElementById("star" + i)
         current.className = "fa fa-star"
     }
-
+/*si las estrellas son menores o iguales a la cantidad seleccionada deben aparecer en color naranja
+se llama al id star y la iteracion hasta el total seleccionado y se llama segun la clase de bootstrap fa fa-star
+y se le agrega checked para que cambie el color*/
     for (var i = 1; i <= starNum; i++) {
         var current = document.getElementById("star" + i)
         if (current.className == "fa fa-star") {
             current.className = "fa fa-star checked"
         }
     }
+    /*rating es una variable inicializada al comienzo del documento, la utilizaremos luego para que cuando se de enviar 
+    al nuevo comentario quede guardada la cantidad de estrellas que deben aparecer naranjas con showRating(rating) */
      rating = starNum;
 }
 document.addEventListener("DOMContentLoaded", function(e){
@@ -141,7 +150,7 @@ getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
             prodSold.innerHTML += prodInfo.soldCount;
 
 
-            //Muestro las imagenes en forma de galería
+            //Muestro las imagenes en forma de galería tipo carrusel
             showImagesGallery(prodInfo.images);
             //Muestro los productos relacionados
             showRelatedProducts(prodInfo.relatedProducts);
@@ -150,6 +159,7 @@ getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
 
         }
     });
+    //PARA AGREGAR NUEVOS COMENTARIOS
     document.getElementById("enviar").addEventListener("click", function(){ //cuando se hace click en enviar en la seccion de comentar
         
         let texto = document.getElementById("textAreaComment").value; //tomar lo que esta comentado para luego mostrarlo

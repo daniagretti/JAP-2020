@@ -27,18 +27,20 @@ function showCartProductsAndTotalCost(array) {
 
         htmlProd = `
         
-            <tr>
+             <tr id="arts${i}">
                 <td><img src="` + art.src + `" class="img-thumbnail" style="width:100px"></td>
                 <td><p>`+ art.name + `</p></td>
                 <td><p>`+ "USD " + tipoCambio(art) + `</p></td>
                 <td><input type="number" min="1" placeholder="` + art.count + `" style="width:50px" class="form-control text-center cant" ></td>
                 <td ><strong id="subT${i}" class="sub">  ` + art.count*tipoCambio(art) + `</strong></td>
+                <td><img style="height:30px" src="https://www.flaticon.com/svg/static/icons/svg/545/545755.svg" class="eliminar"></td>
             </tr>
             
         `
         document.getElementById("cart-products").innerHTML += htmlProd;
 
     }
+    borrarArticulo();
     agregarEvents(array);
 }
 /* Se obtiene un array con todos los elementos de la clase cant, que serian las cantidades de los inputs del html de arriba
@@ -52,6 +54,16 @@ function agregarEvents(articles) {
             let subtotal = cant * tipoCambio(articles[i]); //se calcula el subtotal con la cantidad * el costo con la conversion a la moneda ya hecho
             document.getElementById("subT"+i).innerHTML =  subtotal; //muestro el nuevo subtotal en el html
             cartTotalCost(); //la llamo para que recalcule el total cada vez que se cambia la cantidad
+        })
+    }
+}
+/* funcion qur elimina el articulo cuando hacemos click en la imagen de tacho de basura*/
+function borrarArticulo(){
+    let trash = document.getElementsByClassName("eliminar");
+    for (let i = 0; i<trash.length; i++){
+        trash[i].addEventListener("click", function(){
+            document.getElementById("arts"+i).innerHTML="";
+            cartTotalCost();
         })
     }
 }

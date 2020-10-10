@@ -92,7 +92,7 @@ function cartTotalCost() {
     va a mostrarse en el div que tiene como id "envios"*/
 function tipoEnvio() {
     let htmlEnvio = `
-    <h3>Tipo de envío</h3>
+    <h3><img src="https://www.flaticon.com/svg/static/icons/svg/3366/3366832.svg" style="height:70px">Tipo de envío</h3>
     <hr>
     <input type="radio" id="premium" name="envio" checked><label for="premium" >Premium 2 a 5 días (15%)</label><br>
     <input type="radio" id="express" name="envio"><label for="express" >Express 5 a 8 días (7%)</label><br>

@@ -80,11 +80,73 @@
             <h5>SubTotal </h5><span id="subtotal"></span>
           </li>
           <li class="list-group-item justify-content-between d-flex">
+            <h5>Envío </h5><span id="montoDeEnvio"></span>
+          </li>
+          <li class="list-group-item justify-content-between d-flex">
             <h5>Total </h5><span id="total"></span>
           </li>
         </ul>
 
       </div>
+    </div>
+    <br>
+
+    <div id="datosEnvio"></div>
+    <br>
+    <div id="formaPago"></div>
+
+    <div id="ventanaFP">
+      <div class="modal" tabindex="-1" role="dialog" id="ventanaModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title"><img src="https://www.flaticon.com/svg/static/icons/svg/2385/2385969.svg"
+                  style="height:50px">Seleccione forma de pago</h3>
+              <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              
+              <label for="tarjeta"> Tarjeta de crédito </label>
+              <input type="radio" id="tarjeta" name="pago">
+              <br>
+              <label for="cardNum">Número de tarjeta </label>
+              <input type="text" id="cardNum" required>
+
+              <label for="cvc"> Código de seguridad </label>
+              <input type="text" id="cvc" required>
+              <br>
+              <label for="vto"> Vencimiento </label>
+              <input type="month" id="vto" required>
+
+              <hr>
+
+              <label for="tranferencia"> Transferencia Bancaria </label>
+              <input type="radio" id="transferencia" name="pago">
+              <br>
+              <label for="cuenta">Número de cuenta </label>
+              <input type="text" id="cuenta" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" style="background-color: #E5097F; color: white;" id="save">Guardar</button>
+              <span id="validarDatosModal"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span id="exito"></span>
+    <br>
+
+
+
+    <div style="text-align: center;">
+      <button type="button" id="btnComprar" class="btn btn-default btn-lg " style="background-color: #E5097F; color: white;">Comprar</button>
+      <span id="validaciones"></span>
     </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">

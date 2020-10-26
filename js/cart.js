@@ -187,13 +187,14 @@ function ventanaModal() {
 
         //Cuando se hace click en guardar se valida si estan completos los datos y da mensajes en caso de que falten o que se logre con exito
         document.getElementById("save").addEventListener("click", function () {
-            if (numeroT.value == "" || cvc.value == "" || vencimiento.value == "") {
+            if ((numeroT.value == "" || cvc.value == "" || vencimiento.value == "" || numeroCta != "" ) && (numeroT.value =="" || cvc.value =="" || vencimiento == "" )){
                 document.getElementById("validarDatosModal").innerHTML = `<div class="alert alert-warning alert-dismissable" id="alerta">
                <button type="button" class="close" data-dismiss="alert">&times;</button>
                <strong>¡Atención!</strong> Debes ingresar los datos de tu tarjeta.
                </div>`
+                mensajeExitoso= false;
             } else {
-                //ocultar modal cuando estan los datos correctamente y doy guardar
+                //ocultar modal cuando estan los datos y doy guardar
                 $('#ventanaModal').modal('hide');
                 mensajeExitoso = true;
             }
@@ -217,11 +218,12 @@ function ventanaModal() {
 
         //Cuando se hace click en guardar se valida si estan completos los datos y da mensajes en caso de que falten o que se logre con exito
         document.getElementById("save").addEventListener("click", function () {
-            if (numeroCta.value == "") {
+            if ( (numeroCta.value == "" || numeroT.value != "" || cvc.value != "" || vencimiento.value != "" ) && (numeroCta.value == "" || numeroT.value == "" || cvc.value =="" || vencimiento.value == "" )) {
                 document.getElementById("validarDatosModal").innerHTML = `<div class="alert alert-warning alert-dismissable" id="alerta">
                <button type="button" class="close" data-dismiss="alert">&times;</button>
                <strong>¡Atención!</strong> Debes ingresar tu cuenta de banco.
                </div>`
+                mensajeExitoso = false;
             } else {
                 //ocultar modal cuando estan los datos correctamente y doy guardar
                 $('#ventanaModal').modal('hide');

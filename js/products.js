@@ -68,7 +68,7 @@ function showProductsList() {
                             <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail">
                             <div class="card-body">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h4 class="mb-1">` + products.name + `</h4>
+                                    <h4 class="mb-1"  style="color: rgb(245, 21, 107);">` + products.name + `</h4>
                                 </div>
 
                                 <div> 

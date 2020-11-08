@@ -40,10 +40,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
             }
             var perfilJSON = JSON.stringify(datosPerfil);
             localStorage.setItem("datosDePerfil", perfilJSON);
-
-
-
-
         })
         //invocamos la funcion imagen para que se pueda ejecutar, donde tenemos funcionalidad al hacer click en el boton de subir imagen
     imagen();

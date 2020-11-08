@@ -14,7 +14,7 @@ function busqueda(prods) {
 
     for (let i = 0; i < prods.length; i++) {
         if (prods[i].dataset.filterName.toUpperCase().includes(filtro) || prods[i].dataset.filterDesc.toUpperCase().includes(filtro)) {
-            prods[i].parentNode.style.display = "";
+            prods[i].parentNode.style.display = "block";
         } else {
             prods[i].parentNode.style.display = "none";
         }
@@ -65,21 +65,23 @@ function showProductsList() {
                 
                     <div class="col-md-6 col-sm-12">
                         <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+                            <div class="filterprod" data-filter-name="` + products.name + `"data-filter-desc="` + products.description + `">                
                             <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail">
-                            <div class="card-body">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h4 class="mb-1"  style="color: rgb(245, 21, 107);">` + products.name + `</h4>
-                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h4 class="mb-1"  style="color: rgb(245, 21, 107);">` + products.name + `</h4>
+                                    </div>
 
-                                <div> 
-                                    <p class="card-text">` + products.description + ` </p>
-                                    <small class="text-muted"> Vendidos ` + products.soldCount + `</small>
+                                    <div> 
+                                        <p class="card-text">` + products.description + ` </p>
+                                        <small class="text-muted"> Vendidos ` + products.soldCount + `</small>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center>
+                                        <strong class="text-muted"> Precio ` + products.currency + " " + products.cost + `</strong>
+                                    </div>
+
                                 </div>
-                                
-                                <div class="d-flex justify-content-between align-items-center>
-                                    <strong class="text-muted"> Precio ` + products.currency + " " + products.cost + `</strong>
-                                </div>
-                    
                             </div>
                         </a>
                     </div>
@@ -153,7 +155,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
     });
     //buscador
     document.getElementById("buscador").addEventListener("keyup", function() {
-        busqueda(prods);
+        let produ = document.getElementsByClassName("filterprod");
+        busqueda(produ);
 
     });
 
